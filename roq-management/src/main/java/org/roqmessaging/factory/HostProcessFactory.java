@@ -28,6 +28,8 @@ public class HostProcessFactory {
 	
 	private HcmState serverState;
 	
+	private String zkAddresses;
+	
 	private ProcessMonitor processMonitor;
 	
 	public HostProcessFactory(HcmState serverState, HostConfigDAO properties) 
@@ -36,8 +38,9 @@ public class HostProcessFactory {
 		this.properties = properties;
 	}
 	
-	public void setProcessMonitor(ProcessMonitor processMonitor) {
+	public void setProcessMonitor(ProcessMonitor processMonitor, String zkAddresses) {
 		this.processMonitor = processMonitor;
+		this.zkAddresses = zkAddresses;
 	}
 	
 	/**
@@ -189,7 +192,8 @@ public class HostProcessFactory {
 		// argument);
 		ProcessBuilder pb = new ProcessBuilder("java", "-Djava.library.path="
 				+ System.getProperty("java.library.path"), "-cp", System.getProperty("java.class.path"),	MonitorLauncher.class.getCanonicalName(), new Integer(frontPort).toString(),
-				new Integer(statPort).toString(), qName, new Integer(this.properties.getStatPeriod()).toString(), this.properties.getLocalPath(), new Long( this.properties.getMonitorHbPeriod()).toString());
+				new Integer(statPort).toString(), qName, new Integer(this.properties.getStatPeriod()).toString(), this.properties.getLocalPath(), 
+				new Long( this.properties.getMonitorHbPeriod()).toString(), zkAddresses);
 		try {
 			logger.debug("Starting: " + pb.command());
 			final Process process = pb.start();

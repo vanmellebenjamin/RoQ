@@ -34,7 +34,7 @@ public class MonitorLauncher {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Launching Monitor process with arg "+displayArg(args));
-		if(args.length != 6){
+		if(args.length != 7){
 			System.out.println("The argument should be <int: base port> <int: stat port> <qname> <localStateDbPath> <hbPeriod>");
 			return;
 		}
@@ -44,7 +44,7 @@ public class MonitorLauncher {
 			int basePort = Integer.parseInt(args[0]);
 			int statPort = Integer.parseInt(args[1]);
 			long hbPeriod = Long.parseLong(args[5]);
-			final Monitor monitor = new Monitor(basePort, statPort,  args[2], args[3], args[4], hbPeriod);
+			final Monitor monitor = new Monitor(basePort, statPort,  args[2], args[3], args[4], hbPeriod, args[6]);
 			Thread t = new Thread(monitor);
 			t.start();
 			

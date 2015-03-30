@@ -1,5 +1,6 @@
 package org.roqmessaging.zookeeper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.curator.framework.CuratorFramework;

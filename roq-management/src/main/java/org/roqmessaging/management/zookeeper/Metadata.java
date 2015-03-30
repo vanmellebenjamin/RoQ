@@ -1,6 +1,8 @@
 package org.roqmessaging.management.zookeeper;
 
-public class Metadata {
+import org.roqmessaging.zookeeper.CoreMetadata;
+
+public class Metadata extends CoreMetadata {
 	public static class HCM {
 		// address format: "x.y.z"
 		public String address;
@@ -97,5 +99,7 @@ public class Metadata {
 	}
 	
 	// Private constructor because Metadata is just a namespace.
-	private Metadata() {}
+	private Metadata() {
+		super();
+	}
 }

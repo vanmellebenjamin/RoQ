@@ -100,6 +100,7 @@ public class FileConfigurationReader {
 			configDao.setGcmAddress(config.getString("gcm.address")!=null?config.getString("gcm.address"):configDao.getGcmAddress());
 			configDao.ports.setBasePort(config.getInt("gcm.ports.base"));
 			
+			configDao.setZkAddresses(config.getString("zkAddresses"));
 			configDao.setExchangeFrontEndPort(config.getInt("exchange.base.port"));
 			configDao.setMonitorBasePort(config.getInt("monitor.base.port"));
 			configDao.setStatMonitorBasePort(config.getInt("statmonitor.base.port"));

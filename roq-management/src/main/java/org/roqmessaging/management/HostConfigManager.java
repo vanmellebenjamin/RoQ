@@ -101,7 +101,7 @@ public class HostConfigManager implements Runnable, IStoppable {
 			this.shutDownMonitor = new ShutDownMonitor(5101, this);
 			hbMonitor = new ProcessMonitor(properties.getLocalPath(), 
 						properties, this.processFactory);
-			this.processFactory.setProcessMonitor(hbMonitor);
+			this.processFactory.setProcessMonitor(hbMonitor, this.properties.getZkAddresses());
 			new Thread(hbMonitor).start();
 			new Thread(this.shutDownMonitor).start();
 		} catch (ConfigurationException e) {

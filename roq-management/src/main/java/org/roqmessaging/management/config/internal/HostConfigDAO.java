@@ -35,6 +35,7 @@ public class HostConfigDAO {
 	private int monitorTimeOut = 10000;
 	private int monitorMaxTimeToStart = 20000;
 	private long monitorHbPeriod = 1000;
+	private String zkAddresses = "localhost";
 	
 	// Class which contains the ports used for the various components of the GCM.
 	public GCMPorts ports = new GCMPorts();
@@ -233,6 +234,12 @@ public class HostConfigDAO {
 	}
 	public void setScalingProcessHbPeriod(long period) {
 		monitorHbPeriod = period;
+	}
+	public String getZkAddresses() {
+		return zkAddresses;
+	}
+	public void setZkAddresses(String zkAddresses) {
+		this.zkAddresses = zkAddresses;
 	}
 
 }

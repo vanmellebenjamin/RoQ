@@ -14,6 +14,8 @@
  */
 package org.roqmessaging.state;
 
+import java.util.HashMap;
+
 import org.roqmessaging.core.Monitor;
 
 /**
@@ -69,7 +71,20 @@ public class ExchangeState {
 			this.lost++;
 
 		}
-
+		
+		/**
+		 * Recover the Exchange state tough ZK hashmap
+		 * @param hashmap with Exchange state from Zk
+		 */
+		public ExchangeState(HashMap<String, String> state) {
+			this.address = state.get("address");
+			this.throughput = Integer.parseInt(state.get("throughput"));
+			this.lost = Integer.parseInt(state.get("lost"));
+			this.nbProd = Integer.parseInt(state.get("nbProd"));
+			this.backPort= Integer.parseInt(state.get("backPort"));
+			this.frontPort = Integer.parseInt(state.get("frontPort"));
+		}
+		
 		/**
 		 * @param addr the host address of the exchange
 		 * @param frontPort the front port for the publisher
